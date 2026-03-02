@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>城市性格匹配测试</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 激活码输入页面 -->
+        <div id="activation-page" class="page active">
+            <h1>你的性格与哪个城市是天选CP</h1>
+            <input type="text" id="activation-code" placeholder="请输入激活码开始测试">
+            <button id="confirm-btn">确认</button>
+        </div>
+
+        <!-- 测试介绍页面 -->
+        <div id="intro-page" class="page">
+            <div class="card">
+                <h1>你的性格与哪个城市是天选CP</h1>
+                <div class="logo">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.34 11.5 9 10.16 9 8.5C9 6.84 10.34 5.5 12 5.5C13.66 5.5 15 6.84 15 8.5C15 10.16 13.66 11.5 12 11.5Z" fill="#e91e63"/>
+                    </svg>
+                </div>
+                <p class="description">
+                    在漫长的生活里，总有一座城与你的灵魂同频。在这里，诗意不必追寻——可能是杭州的烟雨画桥，也可能是成都的巴适午后。
+                    完成这份测试，发现让你真正放松、找到归属感的心灵城市。
+                    遇见中国最适合你的那座城，从此旅途有方向，心安是归处。
+                </p>
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z" fill="#e91e63"/>
+                            </svg>
+                        </div>
+                        <h3>30道精选题目</h3>
+                        <p>覆盖生活各方面</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12.5 7H11V13L16.2 16.2L17 14.9L12.5 12.2V7Z" fill="#e91e63"/>
+                            </svg>
+                        </div>
+                        <h3>约5分钟完成</h3>
+                        <p>轻松快速测试</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2ZM2 17L12 22L22 17L12 12L2 17Z" fill="#e91e63"/>
+                            </svg>
+                        </div>
+                        <h3>16座城市匹配</h3>
+                        <p>发现你的天选之城</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4C9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14C0 17.31 2.69 20 6 20H19C21.76 20 24 17.76 24 15C24 12.36 21.95 10.22 19.35 10.04ZM19 18H6C3.79 18 2 16.21 2 14C2 11.95 3.53 10.24 5.56 10.03L6.89 13H16.11L17.44 10.03C19.47 10.24 21 11.95 21 14C21 16.21 19.21 18 17 18H19Z" fill="#e91e63"/>
+                            </svg>
+                        </div>
+                        <h3>智能匹配算法</h3>
+                        <p>基于六维性格模型</p>
+                    </div>
+                </div>
+                <button id="start-test-btn">开始测试</button>
+            </div>
+        </div>
+
+        <!-- 测试题目页面 -->
+        <div id="test-page" class="page">
+            <div class="card">
+                <div class="progress-section">
+                    <div class="question-number">问题 <span id="current-question">1</span>/30</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 3%"></div>
+                    </div>
+                    <div class="progress-percentage">3%</div>
+                </div>
+                <h2 id="question-text">你更喜欢哪种生活节奏？</h2>
+                <div class="options" id="options-container">
+                    <div class="option-item">
+                        <input type="radio" name="question" value="1" id="option-1">
+                        <label for="option-1"><span>快节奏，追求高效与忙碌</span></label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="question" value="2" id="option-2">
+                        <label for="option-2"><span>慢节奏，享受悠闲时光</span></label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="question" value="3" id="option-3">
+                        <label for="option-3"><span>介于两者之间，能适应不同节奏</span></label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" name="question" value="4" id="option-4">
+                        <label for="option-4"><span>根据心情而定，有时想快有时想慢</span></label>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+                    <button id="prev-btn" disabled>上一题</button>
+                    <button id="next-btn">下一题</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 测试结果页面 -->
+        <div id="result-page" class="page">
+            <h1>你的性格与这座城市最匹配</h1>
+            <p class="subtitle">爱你的「天选之城」</p>
+            <div class="result-card">
+                <div class="logo">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.34 11.5 9 10.16 9 8.5C9 6.84 10.34 5.5 12 5.5C13.66 5.5 15 6.84 15 8.5C15 10.16 13.66 11.5 12 11.5Z" fill="#e91e63"/>
+                    </svg>
+                </div>
+                <div class="compatibility">95%</div>
+                <h2>你的天选之城：青岛</h2>
+                <div class="tags">
+                    <span class="tag">自然型</span>
+                    <span class="tag">社交型</span>
+                    <span class="tag">休闲型</span>
+                </div>
+                <div class="match-reasons">
+                    <h3>匹配理由</h3>
+                    <p>
+                        你的性格一样，舒适而惬意又充满海洋活力。青岛的海滨风光、啤酒文化、德式风情、舒适的气候环境、热爱自由的性格特质，作为自然型人格，你沉醉于鼓浪屿和大海的浪漫；作为社交型人格，你享受在酒馆里和朋友碰杯的快乐；作为休闲型人格，你喜欢在海边散步和品尝海鲜。这"啤酒之城"的理想与浪漫，能让你在海风中找到生活的美好。
+                    </p>
+                </div>
+            </div>
+            <h3 class="other-cities-title">其他适合的城市</h3>
+            <div class="other-cities">
+                <div class="city-card">
+                    <h4>厦门</h4>
+                    <div class="city-compatibility">92%</div>
+                    <div class="city-tags">
+                        <span class="city-tag">文艺范</span>
+                        <span class="city-tag">海洋性</span>
+                        <span class="city-tag">自然型</span>
+                    </div>
+                    <p class="city-desc">
+                        海上花园厦门，气候宜人，风景优美，海鲜环生，环岛路，这里有多元的文艺气息，适合追求生活、充满活力的你。
+                    </p>
+                </div>
+                <div class="city-card">
+                    <h4>大连</h4>
+                    <div class="city-compatibility">92%</div>
+                    <div class="city-tags">
+                        <span class="city-tag">北方明珠</span>
+                        <span class="city-tag">海滨城市</span>
+                        <span class="city-tag">浪漫之都</span>
+                    </div>
+                    <p class="city-desc">
+                        北方明珠大连，海滨城市风光，这里有海洋馆、空气清新，生活节奏适中，还有众多美食，适合享受生活的你。
+                    </p>
+                </div>
+                <div class="city-card">
+                    <h4>杭州</h4>
+                    <div class="city-compatibility">90%</div>
+                    <div class="city-tags">
+                        <span class="city-tag">文艺范</span>
+                        <span class="city-tag">科技前沿</span>
+                        <span class="city-tag">宜居城市</span>
+                    </div>
+                    <p class="city-desc">
+                        上有天堂，下有苏杭，杭州兼具江南诗意与现代科技，西湖美景，互联网氛围，这里有独特的魅力，适合品味生活的你。
+                    </p>
+                </div>
+                <div class="city-card">
+                    <h4>南京</h4>
+                    <div class="city-compatibility">90%</div>
+                    <div class="city-tags">
+                        <span class="city-tag">文化底蕴</span>
+                        <span class="city-tag">文学之都</span>
+                        <span class="city-tag">博爱精神</span>
+                    </div>
+                    <p class="city-desc">
+                        六朝古都南京，历史与现代交融，梧桐树下，秦淮河畔，这里充满人文气息，适合有文化底蕴、追求生活品质的你。
+                    </p>
+                </div>
+                <div class="city-card">
+                    <h4>广州</h4>
+                    <div class="city-compatibility">89%</div>
+                    <div class="city-tags">
+                        <span class="city-tag">机会均等</span>
+                        <span class="city-tag">美食之都</span>
+                        <span class="city-tag">温暖湿润</span>
+                    </div>
+                    <p class="city-desc">
+                        务实包容的广州，美食遍地，生活气息浓厚，温暖的气候，适中的房价，这里充满活力，适合享受生活的你。
+                    </p>
+                </div>
+                <div class="city-card">
+                    <h4>苏州</h4>
+                    <div class="city-compatibility">88%</div>
+                    <div class="city-tags">
+                        <span class="city-tag">江南水乡</span>
+                        <span class="city-tag">园林之城</span>
+                        <span class="city-tag">精致生活</span>
+                    </div>
+                    <p class="city-desc">
+                        江南水乡苏州，园林密布，小桥流水，这里的生活闲适精致，节奏舒适，适合追求品质生活、注重文化内涵的你。
+                    </p>
+                </div>
+            </div>
+            <button id="restart-btn">重新测试</button>
+        </div>
+    </div>
+    <div class="copyright">
+        ©️版权归Emotion Lab所有，盗版必究
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
